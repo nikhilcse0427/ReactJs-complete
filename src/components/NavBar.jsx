@@ -20,7 +20,7 @@ const NavBar = ()=>{
 
   return(
     <div className="navbar">
-      <h1><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>LOGO</Link></h1>
+      <h1><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>UrbanKart🛍️</Link></h1>
       <ul className="menu_items">
         <li><Link to="/men" className="nav-link">Men</Link></li>
         <li><Link to="/women" className="nav-link">Women</Link></li>

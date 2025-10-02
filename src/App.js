@@ -8,39 +8,45 @@ import Women from "./components/Women"
 import Kid from "./components/Kid"
 import Error from "./components/Error"
 import { useRouteError } from "react-router-dom"
+import ProductDetails from "./components/ProductDetails"
 
-const Home = () => (
+const App = () => (
    <div>
       <NavBar />
       <Outlet />
    </div>
 )
 
+export default App;
+
 const appRouter = createBrowserRouter([
    {
       path: '/',
-      element: <Home />,
-      errorElement: <Error />,
+      element: <App />,
       children: [
-         {
-            path: '/',
+          {
+            index: '/', 
             element: <ProductCard />
          },
          { 
-            path: '/men',
+            path: 'men',
             element: <Men />
          },
          {  
-            path: '/women',
+            path: 'women',
             element: <Women />
          },
          { 
-            path: '/kid',
+            path: 'kid',
             element: <Kid />
          },
-      ]
-   }
-   
+         {
+            path: 'products/:productId',
+            element: <ProductDetails />
+         },
+      ],
+      // errorElement: <Error />,
+   },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
