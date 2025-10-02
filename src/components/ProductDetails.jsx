@@ -16,7 +16,7 @@ const ProductDetails = () => {
     setSingleProduct(jsonRes)
   }
 
-  if (!singleProduct) {
+  if (singleProduct==null) {
     return <h2>Loading product...</h2> // 👈 loader before product loads
   }
 

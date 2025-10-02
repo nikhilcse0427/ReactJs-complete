@@ -27,10 +27,12 @@
 // }
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 // import {productList} from '../utils/constants.js'
 import Product from "./Product"
 import Skelleton from './Skelleton.jsx'
 //name export type  {export const ProductCard}
+
 const ProductCard = () => {
   const [prodList, setProdList] = useState([])
   const [filteredList, setFilteredList] = useState([])
@@ -76,7 +78,7 @@ const ProductCard = () => {
       </div>
       <div className="product-card">
         {filteredList.map((product, index) => (
-          <Product products={product} key={index} />
+          <Link key={product.id} to={`/products/${product.id}`} style={{color: "black", textDecoration: "none"}}><Product products={product}/></Link> //key value always in parent so now parent become link tag
         ))}
       </div>
     </>
