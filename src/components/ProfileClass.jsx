@@ -5,8 +5,8 @@ class ProfileClass extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      // count1:0,
-      // count2:0,
+      count1:0,
+      count2:0,
       userProfile: null
     }
 
@@ -21,15 +21,24 @@ class ProfileClass extends React.Component{
     this.setState({
       userProfile : resData
     })
+    {/**We used this.timer here this keyword  not const because const id block scoped and this key word allow all menthod to access variable inside class */}
+     this.timer = setInterval(()=>{
+      console.log("ReactJs complete")
+    }, 1000)
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     console.log("component did update")
+    if(this.state.count1 != prevState.count1 || this.state.count2 != prevState.count2){
+      console.log("componentDidUpdate render after state update")
+    }
   }
 
   /**This will come when we leave this page nest  */
   componentWillUnmount(){
     console.log("component will unmount")
+    //CLEANUP -> THOSE THING WHICH ARE NOT IN USED REMOVE IT
+    clearInterval(this.timer)
   }
   
   render(){

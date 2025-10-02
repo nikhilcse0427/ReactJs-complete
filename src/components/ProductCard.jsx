@@ -40,6 +40,12 @@ const ProductCard = () => {
 
   useEffect(() => {
     fetchData()
+    const timer = setInterval(()=>{
+      console.log("useEffect render")
+    }, 1000)
+    return ()=>(
+      clearInterval(timer)
+    )
   }, [])
 
   const fetchData = async () => {
