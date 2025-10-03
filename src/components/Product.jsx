@@ -10,9 +10,9 @@
 // }
 
 
-import ProductCard from "./ProductCard"
 const Product = ({products})=>{
   const {title, image, rating, price} = products
+  console.log("TITLE: ", title)
   return(
     <div className="product-box">
       <img src={image}></img>
@@ -24,3 +24,32 @@ const Product = ({products})=>{
 }
 
 export default Product
+
+
+// const NewComp = ()=>{
+//   return (
+//     <div>
+
+//     </div>
+//   )
+// }
+
+export const HOF = (Product)=>{
+  return (props)=>{
+    return(
+      <div style={{position: "relative"}}>
+        <button
+          style={{
+            position: "absolute",
+            color: "white",
+            backgroundColor: "black",
+            fontWeight: "bold",
+          }}
+        >
+          Best Seller
+        </button>
+        <Product {...props} />
+      </div>
+    )
+  }
+}

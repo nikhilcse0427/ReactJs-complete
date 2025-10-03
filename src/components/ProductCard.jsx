@@ -28,6 +28,7 @@
 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { HOF } from './Product'
 // import {productList} from '../utils/constants.js'
 import Product from "./Product"
 import Skelleton from './Skelleton.jsx'
@@ -54,6 +55,8 @@ const ProductCard = () => {
     setProdList(jsonData)
     setFilteredList(jsonData)
   }
+
+  const HOFComponent = HOF(Product)//This HOF is higher order component
 
   // if(prodList.length===0){
   //   return <Skelleton />
@@ -83,10 +86,20 @@ const ProductCard = () => {
         }} style={{ padding: "5px", backgroundColor: "#2D2D34", color: "white", fontWeight: "bold", borderRadius: '5px' }}>Top Rated Product</button>
       </div>
       <div className="product-card">
-        {filteredList.map((product, index) => (
-          <Link key={product.id} to={`/products/${product.id}`} style={{color: "black", textDecoration: "none"}}><Product products={product}/></Link> //key value always in parent so now parent become link tag
-        ))}
-      </div>
+      {filteredList.map((product) => (
+        <Link
+          key={product.id}
+          to={`/products/${product.id}`}
+          style={{ color: "black", textDecoration: "none" }}
+        >
+          {product.rating.rate >= 4 ? (
+            <HOFComponent products={product} />
+          ) : (
+            <Product products={product} />
+          )}
+        </Link>
+      ))}
+    </div>
     </>
   )
 }

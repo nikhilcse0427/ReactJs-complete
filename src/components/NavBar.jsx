@@ -22,11 +22,12 @@ const NavBar = ()=>{
     <div className="navbar">
       <h1><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>UrbanKart🛍️</Link></h1>
       <ul className="menu_items">
-        <li><Link to="/men" className="nav-link">Men</Link></li>
-        <li><Link to="/women" className="nav-link">Women</Link></li>
-        <li><Link to="/kid" className="nav-link">Kids</Link></li>
-        <li><Link to="/about" className="nav-link">About</Link></li>
-        <li><Link to="#" className="nav-link">Cart</Link></li>
+        <li><Link to="/men" className="nav-link">MEN</Link></li>
+        <li><Link to="/women" className="nav-link">WOMEN</Link></li>
+        <li><Link to="/kid" className="nav-link">KIDS</Link></li>
+        <li><Link to="/about" className="nav-link">ABOUT</Link></li>
+        <li><Link to="/groceries" className="nav-link">GROCERIES</Link></li>
+        <li><Link to="#" className="nav-link">CART</Link></li>
         <button style={{width: "65px", fontWeight: "bold", color:theme==="Light"?"black":"white",backgroundColor: theme==="Dark"?"black":"white", borderRadius: "5px"}} onClick={()=>{
           theme === "Light"?setTheme("Dark"):setTheme("Light")
         }}>{theme}</button>
