@@ -1,0 +1,21 @@
+// SINGLE RESPONSIBILITY PRINCIPLE
+
+import React from 'react'
+import { useEffect, useState } from 'react'
+const useGetSingleProduct = (productId) => {
+  const [singleProduct, setSingleProduct] = useState(null)
+
+  useEffect(()=>{
+    fetchSingleProduct()
+  },[])
+
+  const fetchSingleProduct = async ()=>{
+    const data = await fetch(`https://fakestoreapi.com/products/${productId}`)
+    const jsonData = await data.json();
+    setSingleProduct(jsonData)
+  }
+
+  return singleProduct
+}
+
+export default useGetSingleProduct

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Skelleton from './Skelleton'
+import useGetSingleProduct from '../hook/useGetSingleProduct'
 
 const ProductDetails = () => {
-  const [singleProduct, setSingleProduct] = useState(null)
+  // const [singleProduct, setSingleProduct] = useState(null)
   const { productId } = useParams()
 
-  useEffect(() => {
-    fetchData()
-  }, [productId]) // 👈 re-run if productId changes
+  // useEffect(() => {
+  //   fetchData()
+  // }, [productId]) // 👈 re-run if productId changes
 
-  const fetchData = async () => {
-    const responseData = await fetch(`https://fakestoreapi.com/products/${productId}`)
-    const jsonRes = await responseData.json();
-    setSingleProduct(jsonRes)
-  }
+  // const fetchData = async () => {
+  //   const responseData = await fetch(`https://fakestoreapi.com/products/${productId}`)
+  //   const jsonRes = await responseData.json();
+  //   setSingleProduct(jsonRes)
+  // }
+  const singleProduct = useGetSingleProduct(productId)
 
   if (singleProduct==null) {
     return <h2>Loading product...</h2> // 👈 loader before product loads
