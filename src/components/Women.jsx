@@ -1,9 +1,15 @@
 import React from 'react'
-
+import ComponentA from './ComponentA'
 const Women = () => {
+  const userData = {
+    name: "Nikhil Verma",
+    age: 22,
+    address: "Shivnarayanpur, Bhagalpur, Bihar",
+    nationality: "India"
+  }
   return (
-    <div style={{display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold"}}>
-      <h1>!Women Section🚺</h1>
+    <div className="flex justify-center h-screen w-screen">
+      <ComponentA userData={userData} />
     </div>
   )
 }
