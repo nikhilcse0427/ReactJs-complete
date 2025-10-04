@@ -10,6 +10,7 @@ import Women from "./components/Women"
 import Kid from "./components/Kid"
 import About from "./components/About"
 import Error from "./components/Error"
+import Login from "./components/Login"
 import { useRouteError } from "react-router-dom"
 import ProductDetails from "./components/ProductDetails"
 import UserContext from "./utils/UserContext"
@@ -61,6 +62,10 @@ const appRouter = createBrowserRouter([
          {
             path: 'groceries',
             element: <Suspense feedback={<h1>Loading...</h1>}><Groceries /></Suspense>
+         },
+         {
+            path: 'login',
+            element: <Login />
          },
          {
             path: 'products/:productId',

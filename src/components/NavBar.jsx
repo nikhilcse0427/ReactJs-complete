@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import Men from "./Men"
 import Women from "./Women"
 import Kid from "./Kid"
+import Login from "./Login"
 import UserContext from "../utils/UserContext"
 
 const NavBar = ()=>{
@@ -33,7 +34,8 @@ const NavBar = ()=>{
         <li><Link to="/about">ABOUT</Link></li>
         <li><Link to="/groceries">GROCERIES</Link></li>
         <li><Link to="/kid">{user.name}</Link></li>
-        <li><Link to="#">CART</Link></li>
+        {/* <li><Link to="#">CART</Link></li> */}
+        <li><Link to="/login"><button className="h-8 px-2 p-1 bg-blue-500 text-white font-bold text-md rounded-md">Login</button></Link></li>
         <button
   style={{
     width: "65px",
