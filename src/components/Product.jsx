@@ -14,8 +14,8 @@ const Product = ({products})=>{
   const {title, image, rating, price} = products
   console.log("TITLE: ", title)
   return(
-    <div className="product-box">
-      <img src={image}></img>
+    <div className="product-box hover: bg-blue-50">
+      <img src={image} className="mt-6 m-4 in-hover:"></img>
       <p style={{fontWeight: "bold"}}>{title}</p>
       <p>Rating: {rating.rate}</p>
       <p>Price: {price}</p>
@@ -44,6 +44,8 @@ export const HOF = (Product)=>{
             color: "white",
             backgroundColor: "black",
             fontWeight: "bold",
+            padding: "5px",
+            borderRadius: "4px",
           }}
         >
           Best Seller

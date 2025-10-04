@@ -1,8 +1,9 @@
-/* @import "tailwindcss"; */
-
+@import "tailwindcss";
+/* 
 *{
   background-color: #E2DCDE;
-}
+} */
+/*
 .navbar{
   display: flex;
   justify-content: space-between;
@@ -17,7 +18,7 @@
 .navbar > ul > li{
   padding: 10px;
   list-style-type: none;
-}
+} */
 
 .product-card{
   display: flex;
@@ -57,27 +58,6 @@
   background-color: rgb(197, 195, 195);
 }
 
-.search-box{
-  margin-top: 10px;
-  margin-left: 30px;
-}
-
-.search-box > input{
-  height: 25px;
-  width: 180px;
-  border-radius: 3px 0 0 3px;
-  border-right: none;
-  padding-left: 2px;
-}
-
-.search-box > button{
-  height: 30px;
-  background-color: rgb(17, 160, 185);
-  font-weight: bold;
-  color: white;
-  border-radius: 0 3px 3px 0;
-}
-
 .nav-link{
   text-decoration: none;
   font-weight: bold;
@@ -88,3 +68,4 @@
 .nav-link:hover{
   color: rgb(220, 33, 96);
 }
+

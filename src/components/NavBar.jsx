@@ -19,18 +19,34 @@ const NavBar = ()=>{
   },[])
 
   return(
-    <div className="navbar">
-      <h1><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>UrbanKart🛍️</Link></h1>
-      <ul className="menu_items">
-        <li><Link to="/men" className="nav-link">MEN</Link></li>
-        <li><Link to="/women" className="nav-link">WOMEN</Link></li>
-        <li><Link to="/kid" className="nav-link">KIDS</Link></li>
-        <li><Link to="/about" className="nav-link">ABOUT</Link></li>
-        <li><Link to="/groceries" className="nav-link">GROCERIES</Link></li>
-        <li><Link to="#" className="nav-link">CART</Link></li>
-        <button style={{width: "65px", fontWeight: "bold", color:theme==="Light"?"black":"white",backgroundColor: theme==="Dark"?"black":"white", borderRadius: "5px"}} onClick={()=>{
-          theme === "Light"?setTheme("Dark"):setTheme("Light")
-        }}>{theme}</button>
+    <>
+    <div className="flex justify-between px-10 pr-20 p-4 bg-amber-100">
+      <h1 className="text-2xl font-bold"><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>UrbanKart🛍️</Link></h1>
+      <ul className="flex gap-4">
+        <li><Link to="/men">MEN</Link></li>
+        <li><Link to="/women">WOMEN</Link></li>
+        <li><Link to="/kid">KIDS</Link></li>
+        <li><Link to="/about">ABOUT</Link></li>
+        <li><Link to="/groceries">GROCERIES</Link></li>
+        <li><Link to="#">CART</Link></li>
+        <button
+  style={{
+    width: "65px",
+    fontWeight: "bold",
+    marginBottom: "5px",
+    border: "1px solid black",
+    color: theme === "Light" ? "black" : "white",
+    backgroundColor: theme === "Dark" ? "black" : "white",
+    borderRadius: "5px"
+  }}
+  onClick={() => {
+    theme === "Light" ? setTheme("Dark") : setTheme("Light");
+  }}
+>
+  {theme}
+</button>
+
+        
       </ul>
          
       {/* button should not be inside any ul it should have sepearate div industry practice
@@ -38,6 +54,8 @@ const NavBar = ()=>{
       {{ color: "red", fontSize: "20px" }} → ek JS object jo style properties ko define karta hai
       */}
     </div>
+    <hr className="mt-0"/>
+    </>
   )
 }
 //default export type

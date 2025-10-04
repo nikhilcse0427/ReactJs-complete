@@ -64,11 +64,13 @@ const ProductCard = () => {
 
   return prodList.length === 0 ? <Skelleton /> : (
     <>
-      <div className="search-box">
-        <input type="text" placeholder="search product..." onChange={(e) =>
+    <div className='flex gap-5 ml-8 pt-5'>
+      <div className="search-box flex">
+        <input className="border-l border-b border-t h-10 w-60  rounded-l-sm pl-2" placeholder="search product..." onChange={(e) =>
           setSeachText(e.target.value)}
           value={searchText} />
-        <button onClick={() => {
+          <div className="h-10">
+        <button className="bg-blue-400 w-20 h-10 border-l-0 rounded-r-sm  text-white font-bold" onClick={() => {
           const filteredProd = prodList.filter((product) => {
             return product.title.toLowerCase().includes(searchText.toLowerCase()) // function is itself javascript code so we are not using curly braces and here == comparision operator will not work
           })
@@ -77,13 +79,16 @@ const ProductCard = () => {
         }}>search</button>
       </div>
 
-      <div style={{ marginLeft: "30px", marginTop: "10px" }}>
-        <button onClick={() => {
+      <div style={{ marginLeft: "30px",}}>
+        <button className="h-10" onClick={() => {
           const filteredList = prodList.filter((product) => {
             return product.rating.rate > 4
           })
           setFilteredList(filteredList)
         }} style={{ padding: "5px", backgroundColor: "#2D2D34", color: "white", fontWeight: "bold", borderRadius: '5px' }}>Top Rated Product</button>
+      </div>
+     
+      </div>
       </div>
       <div className="product-card">
       {filteredList.map((product) => (
