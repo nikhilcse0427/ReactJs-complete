@@ -14,7 +14,7 @@ const Product = ({products})=>{
   const {title, image, rating, price} = products
   console.log("TITLE: ", title)
   return(
-    <div className="product-box hover: bg-blue-50">
+    <div className="product-box hover:bg-blue-50">
       <img src={image} className="mt-6 m-4 in-hover:"></img>
       <p style={{fontWeight: "bold"}}>{title}</p>
       <p>Rating: {rating.rate}</p>
