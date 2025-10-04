@@ -25,93 +25,105 @@
 //     </div>
 //   )
 // }
-
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { HOF } from './Product'
-// import {productList} from '../utils/constants.js'
-import Product from "./Product"
-import Skelleton from './Skelleton.jsx'
-//name export type  {export const ProductCard}
+import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { HOF } from "./Product";
+import Product from "./Product";
+import Skelleton from "./Skelleton";
+import UserContext from "../utils/UserContext"; // ✅ import
 
 const ProductCard = () => {
-  const [prodList, setProdList] = useState([])
-  const [filteredList, setFilteredList] = useState([])
-  const [searchText, setSeachText] = useState("")
+  const [prodList, setProdList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  const { name, setUserName } = useContext(UserContext);
 
   useEffect(() => {
-    fetchData()
-    const timer = setInterval(()=>{
-      console.log("useEffect render")
-    }, 1000)
-    return ()=>(
-      clearInterval(timer)
-    )
-  }, [])
+    fetchData();
+    const timer = setInterval(() => {
+      console.log("useEffect render");
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const fetchData = async () => {
-    const resultData = await fetch("https://fakestoreapi.com/products")
-    const jsonData = await resultData.json()
-    setProdList(jsonData)
-    setFilteredList(jsonData)
-  }
+    const resultData = await fetch("https://fakestoreapi.com/products");
+    const jsonData = await resultData.json();
+    setProdList(jsonData);
+    setFilteredList(jsonData);
+  };
 
-  const HOFComponent = HOF(Product)//This HOF is higher order component
+  const HOFComponent = HOF(Product);
 
-  // if(prodList.length===0){
-  //   return <Skelleton />
-  // }
-
-  return prodList.length === 0 ? <Skelleton /> : (
+  return prodList.length === 0 ? (
+    <Skelleton />
+  ) : (
     <>
-    <div className='flex gap-5 ml-8 pt-5'>
-      <div className="search-box flex">
-        <input className="border-l border-b border-t h-10 w-60  rounded-l-sm pl-2" placeholder="search product..." onChange={(e) =>
-          setSeachText(e.target.value)}
-          value={searchText} />
-          <div className="h-10">
-        <button className="bg-blue-400 w-20 h-10 border-l-0 rounded-r-sm  text-white font-bold" onClick={() => {
-          const filteredProd = prodList.filter((product) => {
-            return product.title.toLowerCase().includes(searchText.toLowerCase()) // function is itself javascript code so we are not using curly braces and here == comparision operator will not work
-          })
-          console.log(filteredProd);
-          setFilteredList(filteredProd)
-        }}>search</button>
-      </div>
+      {/* Search + Filter + Username input */}
+      <div className="flex gap-5 ml-8 pt-5">
+        {/* Search Bar */}
+        <div className="flex">
+          <input
+            className="border h-10 w-60 rounded-l-sm pl-2"
+            placeholder="Search product..."
+            onChange={(e) => setSearchText(e.target.value)}
+            value={searchText}
+          />
+          <button
+            className="bg-blue-400 w-20 h-10 rounded-r-sm text-white font-bold"
+            onClick={() => {
+              const filteredProd = prodList.filter((product) =>
+                product.title.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredList(filteredProd);
+            }}
+          >
+            Search
+          </button>
+        </div>
 
-      <div style={{ marginLeft: "30px",}}>
-        <button className="h-10" onClick={() => {
-          const filteredList = prodList.filter((product) => {
-            return product.rating.rate > 4
-          })
-          setFilteredList(filteredList)
-        }} style={{ padding: "5px", backgroundColor: "#2D2D34", color: "white", fontWeight: "bold", borderRadius: '5px' }}>Top Rated Product</button>
-      </div>
-     
-      </div>
-      </div>
-      <div className="product-card">
-      {filteredList.map((product) => (
-        <Link
-          key={product.id}
-          to={`/products/${product.id}`}
-          style={{ color: "black", textDecoration: "none" }}
+        {/* Top Rated Filter */}
+        <button
+          className="h-10 px-3 bg-[#2D2D34] text-white font-bold rounded"
+          onClick={() => {
+            const topRated = prodList.filter(
+              (product) => product.rating.rate > 4
+            );
+            setFilteredList(topRated);
+          }}
         >
-          {product.rating.rate >= 4 ? (
-            <HOFComponent products={product} />
-          ) : (
-            <Product products={product} />
-          )}
-        </Link>
-      ))}
-    </div>
+          Top Rated Product
+        </button>
+
+        {/* Username Updater */}
+        <input
+          type="text"
+          placeholder="Change username..."
+          className="pl-2 h-10 w-60 border rounded-md"
+          onChange={(e) => setUserName(e.target.value)}
+        />
+      </div>
+
+      {/* Products Grid */}
+      <div className="grid grid-cols-4 gap-5 p-5">
+        {filteredList.map((product) => (
+          <Link
+            key={product.id}
+            to={`/products/${product.id}`}
+            className="text-black no-underline"
+          >
+            {product.rating.rate >= 4 ? (
+              <HOFComponent products={product} />
+            ) : (
+              <Product products={product} />
+            )}
+          </Link>
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default ProductCard
-
-
-
-
-
+export default ProductCard;

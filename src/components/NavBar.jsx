@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import {Link} from "react-router-dom"
 import Men from "./Men"
 import Women from "./Women"
 import Kid from "./Kid"
+import UserContext from "../utils/UserContext"
 
 const NavBar = ()=>{
   // let theme = "Light"  This will not work because React does not understand what is let or theme
@@ -18,6 +19,9 @@ const NavBar = ()=>{
     console.log("useEffect render")
   },[])
 
+  const user = useContext(UserContext)
+  console.log("USER: ", user)
+
   return(
     <>
     <div className="flex justify-between px-10 pr-20 p-4 bg-amber-100">
@@ -28,6 +32,7 @@ const NavBar = ()=>{
         <li><Link to="/kid">KIDS</Link></li>
         <li><Link to="/about">ABOUT</Link></li>
         <li><Link to="/groceries">GROCERIES</Link></li>
+        <li><Link to="/kid">{user.name}</Link></li>
         <li><Link to="#">CART</Link></li>
         <button
   style={{

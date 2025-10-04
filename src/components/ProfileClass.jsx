@@ -1,5 +1,6 @@
 import React from "react"
 import Skelleton from "./Skelleton";
+import UserContext from "../utils/UserContext";
 // github profile api https://api.github.com/users/nikhilcse0427
 class ProfileClass extends React.Component{
   constructor(props){
@@ -53,10 +54,15 @@ class ProfileClass extends React.Component{
     const {login, name, email, location, bio, avatar_url} = userProfile
 
     return(
-    <div style={{height: "550px", width: "280px", border: "1px solid black", margin: "40px", padding: " 20px", textAlign: "center"}}>
-      <img src={avatar_url} alt="avatar" style={{height:"150px"}} />
+    <div style={{display: "flex",  alignItems: "center",flexDirection: "column", height: "550px", width: "280px", border: "1px solid black", margin: "40px", padding: " 20px", textAlign: "center", borderRadius: "4px"}}>
+      <img src={avatar_url} alt="avatar" style={{height:"150px",width: "150px", borderRadius: "50%"}} />
       <h2 style={{textAlign: "center", color: "blue", textDecoration: "underline"}}>Github Profile</h2>
-      <h2>userName: <span style={{fontWeight:"normal", fontSize:"18px"}}>{login}</span></h2>
+        <UserContext.Consumer>
+          {(data)=>(
+            <h1>userName: {data.name}</h1>
+          )}
+        </UserContext.Consumer>
+
       <h2>Name: <span style={{fontWeight:"normal", fontSize:"18px"}}>{name}</span></h2>
       <h2>Email: <span style={{fontWeight:"normal", fontSize:"18px"}}>{email || "Not Available"}</span></h2>
       {/* github often return null for email*/ }
