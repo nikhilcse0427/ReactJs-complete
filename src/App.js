@@ -13,6 +13,7 @@ import Error from "./components/Error"
 import Login from "./components/Login"
 import { useRouteError } from "react-router-dom"
 import ProductDetails from "./components/ProductDetails"
+import MemoHook from "./components/MemoHook"
 import UserContext from "./utils/UserContext"
 // import Groceries from './components/Groceries'
 {/**simple tarika se karne ke bajay hum lazy loading ke through import karenge taaki dist folder me seperate html file bane iske liye network in inspect can see so that there are not too much load in one file and got seperate file example flipkart grocery bhi sell karta hai uska alag application ke tarah treat karo */}
@@ -66,6 +67,10 @@ const appRouter = createBrowserRouter([
          {
             path: 'login',
             element: <Login />
+         },
+         {
+            path: 'memo',
+            element: <MemoHook />
          },
          {
             path: 'products/:productId',

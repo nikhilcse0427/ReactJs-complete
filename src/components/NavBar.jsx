@@ -28,6 +28,7 @@ const NavBar = ()=>{
     <div className="flex justify-between px-10 pr-20 p-4 bg-amber-100">
       <h1 className="text-2xl font-bold"><Link to="/" style={{fontSize: "30px", textDecoration: "none", color: "black"}}>UrbanKart🛍️</Link></h1>
       <ul className="flex gap-4">
+        <li><Link to="/memo">MEMO</Link></li>
         <li><Link to="/men">MEN</Link></li>
         <li><Link to="/women">WOMEN</Link></li>
         <li><Link to="/kid">KIDS</Link></li>
